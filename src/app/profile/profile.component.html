@@ -16,8 +16,8 @@
                 </span>
             </div>
         </form>
-        <h2>Appointment:</h2>
         <div *ngIf="appointment">
+            <h2>Appointment:</h2>
 
             <mat-chip>
                 <p>{{appointment.time | timestampToTime}}</p>
@@ -26,5 +26,4 @@
             <button mat-raised-button (click)="deleteAppointment()">Delete appointment</button>
 
         </div>
-        <button mat-raised-button (click)="deleteProfile()">Delete profile</button>
     </div>

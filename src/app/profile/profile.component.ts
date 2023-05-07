@@ -54,7 +54,5 @@ export class ProfileComponent implements OnInit{
     this.appointment = undefined;
   }
 
-  deleteProfile() {
 
-  }
 }
