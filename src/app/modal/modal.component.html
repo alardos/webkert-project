@@ -1,0 +1,12 @@
+<div class="modal" [ngClass]="{ 'open': isOpen }">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Add appointment</h4>
+        </div>
+        <ng-content></ng-content>
+        <div class="modal-footer">
+            <button mat-button class="btn btn-primary" (click)="onConfirm()">Save</button>
+            <button mat-button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>

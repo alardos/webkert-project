@@ -1,0 +1,57 @@
+<mat-tab-group>
+    <mat-tab label="Appointments">
+        <mat-card>
+            <mat-card-title>
+                <button (click)="createAppointment()" mat-button>Generate appointments</button>
+            </mat-card-title>
+        </mat-card>
+        <mat-card [style.color]="appointment.available ? 'secondary' : 'primary'"
+            *ngFor="let appointment of appointments">
+            <mat-card-title><span>{{appointment.time | timestampToTime}}</span><button
+                    (click)="removeAppointmet(appointment)" mat-button>Remove</button></mat-card-title>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Tattoists">
+        <mat-card>
+            <mat-card-title><button (click)="isModalOpen=true" mat-button>Add Tattoist</button></mat-card-title>
+        </mat-card>
+        <mat-card *ngFor="let tattooist of tattooists">
+            <mat-card-title>{{tattooist.nickname}}</mat-card-title>
+            <mat-card-subtitle>{{tattooist.speciality}}</mat-card-subtitle>
+            <mat-card-actions><button mat-button (click)="edit(tattooist)">Edit</button><button mat-button
+                    (click)="delete(tattooist)">Delete</button></mat-card-actions>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>
+
+
+<app-modal [tattooists]="tattooists" [(isOpen)]="isUpdateOpen" (confirm)="update()" (cancel)="onCancel()">
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Nickname</mat-label>
+                <input matInput type="text" formControlName="nickname">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Speciality</mat-label>
+                <input matInput type="text" formControlName="speciality">
+            </mat-form-field>
+        </form>
+    </div>
+</app-modal>
+
+<app-modal [tattooists]="tattooists" [(isOpen)]="isModalOpen" (confirm)="create()" (cancel)="onCancel()">
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Nickname</mat-label>
+                <input matInput type="text" formControlName="nickname">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Speciality</mat-label>
+                <input matInput type="text" formControlName="speciality">
+            </mat-form-field>
+        </form>
+    </div>
+</app-modal>

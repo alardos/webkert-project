@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+	<button routerLink="/appointments" mat-button>Available times</button>
+	<button routerLink="/profile" mat-button>Profile</button>
+	<button routerLink="/admin" *ngIf="isAdmin" mat-button>Manage</button>
+	<button *ngIf="!(user)"  routerLink="/login" mat-button>Login</button>
+	<button *ngIf="(user)" (click)="signOut()" mat-button>Logout</button>
+</mat-toolbar>
+<router-outlet>
+</router-outlet>

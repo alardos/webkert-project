@@ -1,0 +1,27 @@
+
+<div class="main_component">
+    <div class="div-flex">
+        <h1>Profile
+        <mat-chip>
+            <span *ngIf="isAdmin">Admin</span>
+        </mat-chip>
+        </h1>
+        <form [formGroup]="userDataForm">
+            <mat-form-field>
+                <mat-label for="email">Email: </mat-label>
+                <input matInput type="text" formControlName="email" />
+            </mat-form-field>
+            <div>
+                <span class="buttons">
+                    <button mat-raised-button color="primary" (click)="update()">Update</button>
+                </span>
+            </div>
+        </form>
+        <h2>Appointment:</h2>
+        <mat-chip>
+            <p *ngIf="appointment">{{appointment.time | timestampToTime}}</p>
+
+        </mat-chip>
+        <button mat-raised-button (click)="deleteAppointment()">Delete appointment</button>
+        <button mat-raised-button (click)="deleteProfile()">Delete profile</button>
+    </div>

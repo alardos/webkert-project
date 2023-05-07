@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tattoo-appointment-1649a": {
+      "hosting": {
+        "tattoo_appointment": [
+          "tattoo-appointment-1649a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tattoo-appointment-1649a"
+  }
+}
