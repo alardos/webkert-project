@@ -1,10 +1,9 @@
-
 <div class="main_component">
     <div class="div-flex">
         <h1>Profile
-        <mat-chip>
-            <span *ngIf="isAdmin">Admin</span>
-        </mat-chip>
+            <mat-chip *ngIf="isAdmin">
+                <span>Admin</span>
+            </mat-chip>
         </h1>
         <form [formGroup]="userDataForm">
             <mat-form-field>
@@ -18,10 +17,14 @@
             </div>
         </form>
         <h2>Appointment:</h2>
-        <mat-chip>
-            <p *ngIf="appointment">{{appointment.time | timestampToTime}}</p>
+        <div *ngIf="appointment">
 
-        </mat-chip>
-        <button mat-raised-button (click)="deleteAppointment()">Delete appointment</button>
+            <mat-chip>
+                <p>{{appointment.time | timestampToTime}}</p>
+
+            </mat-chip>
+            <button mat-raised-button (click)="deleteAppointment()">Delete appointment</button>
+
+        </div>
         <button mat-raised-button (click)="deleteProfile()">Delete profile</button>
     </div>
