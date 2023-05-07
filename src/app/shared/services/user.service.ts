@@ -38,10 +38,10 @@ export class UserService {
 
   constructor(private fireStore: AngularFirestore, private authService: AuthService, private auth: AngularFireAuth) { }
 
-  create(uid: string | undefined) {
+  create(uid: string) {
     if (uid) {
-      let user: User = { id: uid, selected_appointment: undefined};
-      this.fireStore.collection<User>('users').doc(uid!).set(user);
+      let user: User = { id: uid, selected_appointment: null};
+      this.fireStore.collection<User>('users').doc(uid).set(user);
     }
     return user;
   }
@@ -60,7 +60,8 @@ export class UserService {
   signup(email: string, password: string, firstname?: string, lastname?: string) {
     console.log("signup");
     return this.auth.createUserWithEmailAndPassword(email,password)
-      .then(u => this.create(u.user?.uid))
+    .then(peek)
+      .then(u => this.create(u.user!.uid!))
       .then(user => localStorage.setItem('user_data',JSON.stringify(user)))
   }
 
